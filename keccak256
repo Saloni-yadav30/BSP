@@ -1,20 +1,28 @@
-//SPDX-License-Identifier:MIT
-pragma solidity ^0.8.17;
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.8.2 <0.9.0;
 
-contract Hashfunction{
+contract Hashfunction
+{
     function hash(
-        string memory _text,
-        uint _num,
-        address _addr
-    )
-    public pure returns(bytes32){
-        return keccak256(abi.encodePacked(_text,_num,_addr));
+        string memory text,
+        uint num,
+        address add
+        )
+        public pure returns(bytes32)
+    {
+        return keccak256(abi.encodePacked(text,num,add));
     }
     function collision(
-        string memory _text,
-        string memory _anotherText
-    )
-    public pure returns(bytes32){
-        return keccak256(abi.encodePacked(_text,_anotherText));
+        string memory _str1,
+        string memory _str2
+        )
+        public pure returns(bytes32)
+    {
+        return keccak256(abi.encodePacked(_str1,_str2));
+    }
+    function guess(string memory _strx)public pure returns(bool)
+    {
+        bytes32 str=0x8979793c12f4cc6ce50909d598a63c923036e90c0a5227ff84fb976a12512e35;
+        return keccak256(abi.encodePacked(_strx))==str;
     }
 }
